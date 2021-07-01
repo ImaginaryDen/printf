@@ -11,6 +11,9 @@ void	ft_parse_precision(t_printf *item, char **format, va_list *ap)
 			(*format_str)++;
 			return ;
 		}
-		while (ft_is)
+		while (ft_isdigit(**format))
+		{
+			
+		}
 	}
 }
