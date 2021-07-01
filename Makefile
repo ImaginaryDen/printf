@@ -3,14 +3,14 @@ LIB = libft.a
 
 PATH_INCLUDE = ./includes/
 PATH_LIB = ./libft/
-PATH_SRC = ./SRC/
+PATH_SRC = ./sources/
 
 HEADERS = ${PATH_INCLUDE}ft_printf.h ${PATH_INCLUDE}libft.h
 HDR_INC = -I./includes/
 
 C_FLAGS = -Wall -Wextra -Werror -c
 
-SRC = 
+SRC = ft_utils.c
 SOURCES = $(addprefix $(PATH_SRC), ${SRC}) ft_printf.c
 OBJS = ${SOURCES:.c=.o} $(addprefix $(PATH_LIB), $(LIB))
 
@@ -38,4 +38,4 @@ fclean: clean
 re: fclean all
 
 test: re 
-		make re && make clean && gcc libftprintf.a  -I./includes/ main.c && ./a.out
+		make clean && gcc libftprintf.a  -I./includes/ main.c && ./a.out
