@@ -10,9 +10,18 @@ HDR_INC = -I./includes/
 
 C_FLAGS = -Wall -Wextra -Werror -c
 
-SRC = ft_utils.c
-SOURCES = $(addprefix $(PATH_SRC), ${SRC}) ft_printf.c
-OBJS = ${SOURCES:.c=.o} $(addprefix $(PATH_LIB), $(LIB))
+SRC = ft_utils.c ft_parse.c ft_parse_flag.c ft_parse_width.c ft_problem.c 
+LIB_OBG	=	ft_memset.o			ft_isalnum.o		ft_strrchr.o		ft_isalnum.o		\
+			ft_bzero.o			ft_isascii.o		ft_strnstr.o		ft_strmapi.o		\
+			ft_memcpy.o			ft_isprint.o		ft_strncmp.o		ft_putstr_fd.o		\
+			ft_memccpy.o		ft_toupper.o		ft_atoi.o			ft_putendl_fd.o		\
+			ft_memmove.o		ft_tolower.o		ft_isalpha.o		ft_putnbr_fd.o		\
+			ft_memchr.o			ft_calloc.o			ft_isdigit.o		ft_strtrim.o		\
+			ft_memcmp.o			ft_strdup.o			ft_substr.o			ft_split.o			\
+			ft_strlen.o			ft_strjoin.o		ft_putchar_fd.o		ft_itoa.o			\
+			ft_strlcpy.o		ft_strlcat.o		ft_strchr.o								
+SOURCES = $(addprefix $(PATH_SRC), ${SRC}) ft_printf.c 
+OBJS = ${SOURCES:.c=.o} $(addprefix $(PATH_LIB), $(LIB_OBG))
 
 RM = rm -rf
 
