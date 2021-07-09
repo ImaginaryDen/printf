@@ -32,9 +32,10 @@ static int	ft_abs(int c)
 	return (c);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
 	int	size;
+	int ret;
 	int	copy_n;
 
 	size = 0;
@@ -44,14 +45,16 @@ void	ft_putnbr_fd(int n, int fd)
 		size++;
 		copy_n /= 10;
 	}
+	ret = size;
 	if (n < 0)
-		ft_putchar_fd('-', fd);
+		ret += write(1, "-", 1);
 	if (!n)
-		ft_putchar_fd('0', fd);
+		ret += write(1, "0", 1);
 	while (size)
 	{
 		ft_putchar_fd(ft_abs(n / pow(10, size - 1)) + '0', fd);
 		n %= pow(10, size - 1);
 		size--;
 	}
+	return (ret);
 }

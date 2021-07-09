@@ -1,5 +1,5 @@
 #include "ft_printf.h"
-#include <stdio.h>
+
 int ft_printf(const char *format, ...)
 {
 	int i;
@@ -19,7 +19,6 @@ int ft_printf(const char *format, ...)
 		}
 		else
 			ret += write(1, str, 1);
-		//printf("piska\n");
 		str++;
 	}
 	va_end(ap);

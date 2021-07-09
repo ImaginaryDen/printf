@@ -10,7 +10,7 @@ HDR_INC = -I./includes/
 
 C_FLAGS = -Wall -Wextra -Werror -c
 
-SRC = ft_utils.c ft_parse.c ft_parse_flag.c ft_parse_width.c ft_problem.c 
+SRC = ft_utils.c ft_problem.c 
 LIB_OBG	=	ft_memset.o			ft_isalnum.o		ft_strrchr.o		ft_isalnum.o		\
 			ft_bzero.o			ft_isascii.o		ft_strnstr.o		ft_strmapi.o		\
 			ft_memcpy.o			ft_isprint.o		ft_strncmp.o		ft_putstr_fd.o		\
