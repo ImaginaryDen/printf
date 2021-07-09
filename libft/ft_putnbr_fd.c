@@ -35,7 +35,7 @@ static int	ft_abs(int c)
 int	ft_putnbr_fd(int n, int fd)
 {
 	int	size;
-	int ret;
+	int	ret;
 	int	copy_n;
 
 	size = 0;

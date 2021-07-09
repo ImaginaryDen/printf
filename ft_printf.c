@@ -1,16 +1,16 @@
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	int i;
-	size_t ret;
-	va_list ap;
-	char *str;
+	int		i;
+	size_t	ret;
+	va_list	ap;
+	char	*str;
 
 	va_start(ap, format);
 	i = 0;
 	ret = 0;
-	str = (char *)format; 
+	str = (char *)format;
 	while (*str)
 	{
 		if (*str == '%')

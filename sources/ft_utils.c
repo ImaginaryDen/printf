@@ -14,7 +14,7 @@ static long	pow(int num, int pow_n)
 	return (result);
 }
 
-int ft_abs(int i)
+int	ft_abs(int i)
 {
 	if (i >= 0)
 		return (i);
