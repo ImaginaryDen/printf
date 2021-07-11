@@ -19,10 +19,6 @@ int	ft_putstr_fd(char *s, int fd)
 	if (!s)
 		return (0);
 	size = ft_strlen(s);
-	while (*s)
-	{
-		ft_putchar_fd(*s, fd);
-		s++;
-	}
+	write(fd, s, size);
 	return (size);
 }
