@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-static size_t	pow(int num, int pow_n)
+static size_t	ft_pow(int num, int pow_n)
 {
 	size_t	result;
 
@@ -50,16 +50,16 @@ int	ft_putnbr_fd(int n, int fd)
 		copy_n /= 10;
 	}
 	ret = size;
-	size = pow(10, size - 1);
+	size = ft_pow(10, size);
 	if (n < 0)
 		ret += write(1, "-", 1);
 	if (!n)
 		ret += write(1, "0", 1);
-	while (size)
+	while (size != 1)
 	{
+		size /= 10;
 		ft_putchar_fd(ft_abs(n / size) + '0', fd);
 		n %= size;
-		size /= 10;
 	}
 	return (ret);
 }

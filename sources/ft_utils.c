@@ -1,12 +1,12 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static long	pow(int num, int pow_n)
+static long	ft_pow(int num, int pow_n)
 {
 	long	result;
 
 	if (pow_n <= 0)
-		return (1);
+		return (0);
 	result = 1;
 	while (pow_n)
 	{
@@ -37,14 +37,14 @@ int	ft_putnbr_unsigned(unsigned int n)
 		copy_n /= 10;
 	}
 	ret = size;
-	size = pow(10, size - 1);
+	size = ft_pow(10, size);
 	if (!n)
 		return (write(1, "0", 1));
-	while (size)
+	while (size != 1)
 	{
+		size /= 10;
 		ft_putchar_fd(n / size + '0', 1);
 		n %= size;
-		size /= 10;
 	}
 	return (ret);
 }
@@ -64,14 +64,14 @@ int	ft_putchar_hexadecimal(unsigned int num, int flag)
 	while (copy_n && ++size)
 		copy_n = copy_n / 16;
 	ret = size;
-	size = pow(16, size - 1);
+	size = ft_pow(16, size);
 	if (!num)
 		return (write(1, "0", 1));
-	while (size)
+	while (size != 1)
 	{
+		size /= 16;
 		ft_putchar_fd(base[num / size], 1);
 		num %= size;
-		size /= 16;
 	}
 	return (ret);
 }
@@ -92,14 +92,14 @@ int	ft_putchar_hexadecimal_p(unsigned long num)
 		copy_n = copy_n / 16;
 	}
 	ret = size;
-	size = pow(16, size - 1);
+	size = ft_pow(16, size);
 	if (!num)
 		return (write(1, "0", 1));
-	while (size)
+	while (size != 1)
 	{
+		size /= 16;
 		ft_putchar_fd(base[num / size], 1);
 		num %= size;
-		size /= 16;
 	}
 	return (ret);
 }
