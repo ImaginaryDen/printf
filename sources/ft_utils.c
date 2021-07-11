@@ -61,11 +61,8 @@ int	ft_putchar_hexadecimal(unsigned int num, int flag)
 		base = "0123456789ABCDEF";
 	size = 0;
 	copy_n = num;
-	while (copy_n)
-	{
-		size++;
+	while (copy_n && ++size)
 		copy_n = copy_n / 16;
-	}
 	ret = size;
 	size = pow(16, size - 1);
 	if (!num)
@@ -97,7 +94,7 @@ int	ft_putchar_hexadecimal_p(unsigned long num)
 	ret = size;
 	size = pow(16, size - 1);
 	if (!num)
-		return(write(1, "0", 1));
+		return (write(1, "0", 1));
 	while (size)
 	{
 		ft_putchar_fd(base[num / size], 1);
