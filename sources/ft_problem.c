@@ -39,7 +39,7 @@ int	ft_problem(va_list ap, char **format)
 	else if (**format == 'p')
 	{
 		ret = ft_putstr_fd("0x", 1);
-		ret += ft_putchar_hexadecimal_p(va_arg(ap, unsigned long), 0);
+		ret += ft_putchar_hexadecimal_p(va_arg(ap, unsigned long));
 	}
 	else if (**format == '%')
 		ret = write(1, *format, 1);

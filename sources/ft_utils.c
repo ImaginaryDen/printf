@@ -5,6 +5,8 @@ static long	pow(int num, int pow_n)
 {
 	long	result;
 
+	if (pow_n <= 0)
+		return (1);
 	result = 1;
 	while (pow_n)
 	{
@@ -35,13 +37,14 @@ int	ft_putnbr_unsigned(unsigned int n)
 		copy_n /= 10;
 	}
 	ret = size;
+	size = pow(10, size - 1);
 	if (!n)
-		ret += write(1, "0", 1);
+		return (write(1, "0", 1));
 	while (size)
 	{
-		ft_putchar_fd(n / pow(10, size - 1) + '0', 1);
-		n %= pow(10, size - 1);
-		size--;
+		ft_putchar_fd(n / size + '0', 1);
+		n %= size;
+		size /= 10;
 	}
 	return (ret);
 }
@@ -64,27 +67,26 @@ int	ft_putchar_hexadecimal(unsigned int num, int flag)
 		copy_n = copy_n / 16;
 	}
 	ret = size;
+	size = pow(16, size - 1);
 	if (!num)
-		ret += write(1, "0", 1);
+		return (write(1, "0", 1));
 	while (size)
 	{
-		ft_putchar_fd(base[num / pow(16, size - 1)], 1);
-		num %= pow(16, size - 1);
-		size--;
+		ft_putchar_fd(base[num / size], 1);
+		num %= size;
+		size /= 16;
 	}
 	return (ret);
 }
 
-int	ft_putchar_hexadecimal_p(unsigned long num, int flag)
+int	ft_putchar_hexadecimal_p(unsigned long num)
 {
 	char			*base;
-	int				size;
+	unsigned long	size;
 	int				ret;
 	unsigned long	copy_n;
 
 	base = "0123456789abcdef";
-	if (flag)
-		base = "0123456789ABCDEF";
 	size = 0;
 	copy_n = num;
 	while (copy_n)
@@ -93,13 +95,14 @@ int	ft_putchar_hexadecimal_p(unsigned long num, int flag)
 		copy_n = copy_n / 16;
 	}
 	ret = size;
+	size = pow(16, size - 1);
 	if (!num)
-		ret += write(1, "0", 1);
+		return(write(1, "0", 1));
 	while (size)
 	{
-		ft_putchar_fd(base[num / pow(16, size - 1)], 1);
-		num %= pow(16, size - 1);
-		size--;
+		ft_putchar_fd(base[num / size], 1);
+		num %= size;
+		size /= 16;
 	}
 	return (ret);
 }

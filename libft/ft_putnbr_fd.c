@@ -12,10 +12,14 @@
 
 #include "libft.h"
 
-static int	pow(int num, int pow_n)
-{
-	int	result;
+#include <stdio.h>
 
+static size_t	pow(int num, int pow_n)
+{
+	size_t	result;
+
+	if (pow_n <= 0)
+		return (0);
 	result = 1;
 	while (pow_n)
 	{
@@ -34,9 +38,9 @@ static int	ft_abs(int c)
 
 int	ft_putnbr_fd(int n, int fd)
 {
-	int	size;
-	int	ret;
-	int	copy_n;
+	int		size;
+	int		ret;
+	int		copy_n;
 
 	size = 0;
 	copy_n = n;
@@ -46,15 +50,16 @@ int	ft_putnbr_fd(int n, int fd)
 		copy_n /= 10;
 	}
 	ret = size;
+	size = pow(10, size - 1);
 	if (n < 0)
 		ret += write(1, "-", 1);
 	if (!n)
 		ret += write(1, "0", 1);
 	while (size)
 	{
-		ft_putchar_fd(ft_abs(n / pow(10, size - 1)) + '0', fd);
-		n %= pow(10, size - 1);
-		size--;
+		ft_putchar_fd(ft_abs(n / size) + '0', fd);
+		n %= size;
+		size /= 10;
 	}
 	return (ret);
 }

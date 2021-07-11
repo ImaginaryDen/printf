@@ -23,5 +23,5 @@ void	ft_parse_precision(t_printf *item, char **format_str, va_list *ap);
 int		ft_problem(va_list ap, char **format);
 int		ft_putnbr_unsigned(unsigned int n);
 int		ft_putchar_hexadecimal(unsigned int num, int flag);
-int		ft_putchar_hexadecimal_p(unsigned long num, int flag);
+int		ft_putchar_hexadecimal_p(unsigned long num);
 #endif
